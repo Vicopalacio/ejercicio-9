@@ -22,6 +22,24 @@ const Formulario = () => {
         e.preventDefault();
         let objetoArreglos = {nombreMascota, nombreDuenio, fecha, hora, sintomas};
         setListaCita([...listaCita, objetoArreglos]);
+        setNombreMascota("");
+        setNombreDuenio("");
+        setFecha("");
+        setHora("");
+        setSintomas("");
+    }
+
+    const borrarCard = (cita)=>{
+        let arregloCitas = listaCita.filter((item)=> item !== cita);
+        setListaCita(arregloCitas);
+    }
+
+    let mensaje = "";
+    
+    if(listaCita.length === 0){
+        mensaje="No hay citas programadas"
+    }else{
+        mensaje="";
     }
 
 
@@ -44,6 +62,7 @@ const Formulario = () => {
                   type="text"
                   placeholder="Ingrese nombre de su mascota"
                   onChange={(e)=> setNombreMascota(e.target.value)}
+                  value={nombreMascota}
                 />
               </Col>
             </Form.Group>
@@ -60,6 +79,7 @@ const Formulario = () => {
                   type="text"
                   placeholder="Ingrese nombre del dueño"
                   onChange={(e)=> setNombreDuenio(e.target.value)}
+                  value={nombreDuenio}
                 />
               </Col>
             </Form.Group>
@@ -70,7 +90,8 @@ const Formulario = () => {
                 </Form.Label>
                 <Col md={8}>
                   <Form.Control type="date" placeholder=""
-                  onChange={(e)=> setFecha(e.target.value)} />
+                  onChange={(e)=> setFecha(e.target.value)} 
+                  value={fecha}/>
                 </Col>
               </Form.Group>
             </Col>
@@ -81,7 +102,8 @@ const Formulario = () => {
                 </Form.Label>
                 <Col md={8}>
                   <Form.Control type="time" placeholder="" 
-                  onChange={(e)=> setHora(e.target.value)}/>
+                  onChange={(e)=> setHora(e.target.value)}
+                  value={hora}/>
                 </Col>
               </Form.Group>
             </Col>
@@ -91,7 +113,8 @@ const Formulario = () => {
               </Form.Label>
               <Col sm={10}>
                 <Form.Control type="text" placeholder="Ingrese los sintomas" 
-                onChange={(e)=> setSintomas(e.target.value)}/>
+                onChange={(e)=> setSintomas(e.target.value)}
+                value={sintomas}/>
               </Col>
             </Form.Group>
           </Row>
@@ -102,7 +125,8 @@ const Formulario = () => {
           </div>
         </Form>
       </Container>
-      <ListaVete listaCita={listaCita}></ListaVete>
+      <ListaVete listaCita={listaCita} borrarCard={borrarCard}></ListaVete>
+      <p className="display-6 text-center">{mensaje}</p>
     </>
   );
 };

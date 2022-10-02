@@ -1,6 +1,6 @@
 import { Card, Button, Col, CardImg, Row } from "react-bootstrap";
 
-const ItemLista = ({cita}) => {
+const ItemLista = ({cita, borrarCard}) => {
   return (
     <>
       <Col md={4}>
@@ -28,7 +28,7 @@ const ItemLista = ({cita}) => {
             </div>
           </Card.Body>
             <div className="d-flex justify-content-end">
-            <Button variant="danger my-3">Eliminar</Button>
+            <Button variant="danger my-3" onClick={()=>borrarCard(cita)}>Eliminar</Button>
             </div>
         </Card>
       </Col>
