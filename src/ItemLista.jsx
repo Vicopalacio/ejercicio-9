@@ -3,7 +3,7 @@ import { Card, Button, Col, CardImg, Row } from "react-bootstrap";
 const ItemLista = () => {
   return (
     <>
-      <Col xs={4}>
+      <Col md={4}>
         <Card className='mt-2'>
             <Card.Body>
             <Row>
