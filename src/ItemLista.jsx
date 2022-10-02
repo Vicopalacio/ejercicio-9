@@ -1,6 +1,6 @@
 import { Card, Button, Col, CardImg, Row } from "react-bootstrap";
 
-const ItemLista = () => {
+const ItemLista = ({cita}) => {
   return (
     <>
       <Col md={4}>
@@ -13,25 +13,25 @@ const ItemLista = () => {
                 </Col>
                 <Col sm={8}>
                     <Card.Title>
-              <Card.Text>Mascota: </Card.Text>
+              <Card.Text>Mascota: {cita.nombreMascota} </Card.Text>
                     </Card.Title>
-              <Card.Text>Dueño: </Card.Text>
+              <Card.Text>Dueño: {cita.nombreDuenio} </Card.Text>
                 </Col>
             </Row>
             </Card.Body>
           <Card.Body className='form'>
             <div>
             <Card.Text className='fw-bolder'>Cita:</Card.Text>
-              <Card.Text>Fecha:</Card.Text>
-              <Card.Text>Hora:</Card.Text>
-              <Card.Text>Sintomas:</Card.Text>
+              <Card.Text>Fecha: {cita.fecha} </Card.Text>
+              <Card.Text>Hora: {cita.hora} </Card.Text>
+              <Card.Text>Sintomas: {cita.sintomas} </Card.Text>
             </div>
           </Card.Body>
             <div className="d-flex justify-content-end">
             <Button variant="danger my-3">Eliminar</Button>
             </div>
         </Card>
-      </Col>{" "}
+      </Col>
     </>
   );
 };

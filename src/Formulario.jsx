@@ -1,11 +1,34 @@
+import { useEffect, useState } from "react";
 import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import ListaVete from "./ListaVete";
 
 const Formulario = () => {
+
+    const guardarLocalStorage = JSON.parse(localStorage.getItem("listaMascota")) || [];
+
+    const [nombreMascota, setNombreMascota] = useState('');
+    const [nombreDuenio, setNombreDuenio] = useState('');
+    const [fecha, setFecha] = useState('');
+    const [hora, setHora] = useState('');
+    const [sintomas, setSintomas] = useState('');
+    const [listaCita, setListaCita] = useState(guardarLocalStorage);
+
+    useEffect(() => {
+      localStorage.setItem("listaMascota", JSON.stringify(listaCita));
+    }, [listaCita]);
+    
+
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        let objetoArreglos = {nombreMascota, nombreDuenio, fecha, hora, sintomas};
+        setListaCita([...listaCita, objetoArreglos]);
+    }
+
+
   return (
     <>
       <Container className="form py-4">
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <h3 className="text-center display-6">Llenar formulario</h3>
           <Row>
             <Form.Group
@@ -20,6 +43,7 @@ const Formulario = () => {
                 <Form.Control
                   type="text"
                   placeholder="Ingrese nombre de su mascota"
+                  onChange={(e)=> setNombreMascota(e.target.value)}
                 />
               </Col>
             </Form.Group>
@@ -35,6 +59,7 @@ const Formulario = () => {
                 <Form.Control
                   type="text"
                   placeholder="Ingrese nombre del dueño"
+                  onChange={(e)=> setNombreDuenio(e.target.value)}
                 />
               </Col>
             </Form.Group>
@@ -44,7 +69,8 @@ const Formulario = () => {
                   Fecha
                 </Form.Label>
                 <Col md={8}>
-                  <Form.Control type="date" placeholder="" />
+                  <Form.Control type="date" placeholder=""
+                  onChange={(e)=> setFecha(e.target.value)} />
                 </Col>
               </Form.Group>
             </Col>
@@ -54,7 +80,8 @@ const Formulario = () => {
                   Hora
                 </Form.Label>
                 <Col md={8}>
-                  <Form.Control type="time" placeholder="" />
+                  <Form.Control type="time" placeholder="" 
+                  onChange={(e)=> setHora(e.target.value)}/>
                 </Col>
               </Form.Group>
             </Col>
@@ -63,7 +90,8 @@ const Formulario = () => {
                 Sintoma
               </Form.Label>
               <Col sm={10}>
-                <Form.Control type="text" placeholder="Ingrese los sintomas" />
+                <Form.Control type="text" placeholder="Ingrese los sintomas" 
+                onChange={(e)=> setSintomas(e.target.value)}/>
               </Col>
             </Form.Group>
           </Row>
@@ -74,7 +102,7 @@ const Formulario = () => {
           </div>
         </Form>
       </Container>
-      <ListaVete></ListaVete>
+      <ListaVete listaCita={listaCita}></ListaVete>
     </>
   );
 };
