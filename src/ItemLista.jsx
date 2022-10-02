@@ -13,9 +13,9 @@ const ItemLista = () => {
                 </Col>
                 <Col sm={8}>
                     <Card.Title>
-              <Card.Text>Nombre mascota: </Card.Text>
+              <Card.Text>Mascota: </Card.Text>
                     </Card.Title>
-              <Card.Text>Nombre dueño: </Card.Text>
+              <Card.Text>Dueño: </Card.Text>
                 </Col>
             </Row>
             </Card.Body>

@@ -67,9 +67,9 @@ const Formulario = () => {
               </Col>
             </Form.Group>
           </Row>
-          <div className="d-flex justify-content-end">
-            <Button variant="success" type="submit">
-              Submit
+          <div className="d-flex justify-content-center">
+            <Button variant="success" type="submit" className="px-5">
+              Enviar
             </Button>
           </div>
         </Form>
