@@ -4,7 +4,7 @@ Lista Animales realizadas con React, practicamos el uso de props, state, compone
 
 ## Demo del proyecto
 
-Proba la demo de la lista de Animales del siguiente link: [Demo lista Animales](https://lista-tareas-jo.netlify.app/)
+Proba la demo de la lista de Animales del siguiente link: [Demo lista Animales]()
 
 ## Pasos para probar el proyecto
 
